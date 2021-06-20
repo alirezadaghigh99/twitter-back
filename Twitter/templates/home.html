@@ -3,8 +3,14 @@
 {% block content %}
 <div id="tweet">
     salam
-</div>
+</div >
 <script>
+    function twitt_format(tweet){
+        tweet_content = tweet.content
+        var tweet_str = ""
+        tweet_str += "<div class ="+"mb-4"+">"+ tweet_content+ "</div>"
+        return tweet_str
+    }
     const tweetElem = document.getElementById('tweet')
     tweetElem.innerHTML = "khod dh"
     const xhr = new XMLHttpRequest()
@@ -13,9 +19,15 @@
     const resposeType = "json"
     xhr.responseType = resposeType
     xhr.open(method, url)
+    content_tweet = ""
     xhr.onload = function(){
-        console.log(xhr.response)
-
+        tweet_list = xhr.response.response
+        var i = 0;
+        for (i = 0; i < tweet_list.length; i++){
+            
+            content_tweet += (twitt_format(tweet_list[i]))
+        }
+        tweetElem.innerHTML = content_tweet
     }
     xhr.send()
 </script>
