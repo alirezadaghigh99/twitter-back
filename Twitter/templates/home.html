@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div id="tweet">
+    salam
+</div>
+<script>
+    const tweetElem = document.getElementById('tweet')
+    tweetElem.innerHTML = "khod dh"
+    const xhr = new XMLHttpRequest()
+    const url = "tweets/all_tweets"
+    const method = "GET"
+    const resposeType = "json"
+    xhr.responseType = resposeType
+    xhr.open(method, url)
+    xhr.onload = function(){
+        console.log(xhr.response)
+
+    }
+    xhr.send()
+</script>
+{% endblock content %}

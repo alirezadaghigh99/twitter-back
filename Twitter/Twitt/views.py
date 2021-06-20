@@ -11,6 +11,7 @@ def tweet_list(request, *args, **kwargs):
     tweets = Tweet.objects.all()
     tweet_all = [{'id': tweet.id, 'content':tweet.text} for tweet in tweets]
     data = {
+        'isUser':False,
         'response':tweet_all
     }
     return JsonResponse(data=data)
